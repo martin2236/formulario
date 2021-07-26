@@ -12,7 +12,7 @@
     <div class="title"> 
       Formulario de registro CFL401
     </div>
-    <form autocomplete="off" class="form" method="POST" onsubmit="return confirm('verifique que sus datos son correctos. <?php verificar() ;?>. si lo son de click en acepta sino en cancelar.');">
+    <form autocomplete="off" class="form" method="POST" onsubmit="return confirm('usted esta a punto de registrarse como: <?php verificar() ;?>. Desea continuar.');">
        <div class="inputfield">
           <label>Nombre</label>
           <input type="text" name="nombre" class="input" class="nombre" required>
@@ -89,8 +89,24 @@
 </html>
 <?php include("conexion.php"); ?>
 <?php include("datos.php"); ?>
+
 <?php function verificar(){
-echo"su nombre es: ${$nombre}";
+  if(isset($_POST['enviar'])){
+ 
+$nombre = $_POST['nombre'];
+$apellido = $_POST['apellido'];
+$ndoc = $_POST['documento'];
+$cel = $_POST['telefono'];
+$nya = $apellido." _ ".$nombre;
+$tdoc = $_POST['tdoc'];
+$sexo = $_POST['sexo'];
+$estado= $_POST['estado'];
+$domicilio =$_POST['domicilio'];
+$cp = $_POST['cp'];  
+
+
+echo $nya, $domicilio, $cp, $tdoc, $ndoc, $cel, $estado, $sexo;
+};
 }; ?>
 <script>
 if ( window.history.replaceState ) {
